@@ -59,6 +59,7 @@ setInterval(function(){
     console.log("notes: " + notes.length);
     for (var i = 0; i < notes.length; i++){
         var curDate = new Date().getHours() + ':' + new Date().getMinutes();
+        console.log("curDate: " + curDate);
             if ( notes[i]['time'] == curDate ) {
                 console.log("we are here : " + notes[i]['text']);
                 bot.sendMessage(notes[i]['uid'], 'Напоминаю, что вы должны: '+ notes[i]['text'] + ' сейчас.');
