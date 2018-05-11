@@ -8,7 +8,8 @@ var bot = new TelegramBot(token, {polling: true});
 bot.on('polling_error', (error) => {
     console.log(error.code);  // => 'EFATAL'
   });
-  
+
+  /*
 // Matches /love
 bot.onText(/\/love/, function onLoveText(msg) {
     const opts = {
@@ -22,7 +23,7 @@ bot.onText(/\/love/, function onLoveText(msg) {
     };
     bot.sendMessage(msg.chat.id, 'Do you love me?', opts);
   });
-  
+  */
 
 bot.onText(/\/echo (.+)/, (msg, match) => {
     // 'msg' is the received Message from Telegram
@@ -64,7 +65,7 @@ setInterval(function(){
         }
 },1000);
 
-
+/*
 // Простая команда без параметров.
 bot.on('message', function (msg) {
     var chatId = msg.chat.id;
@@ -72,3 +73,4 @@ bot.on('message', function (msg) {
     var photo = 'cats.png';
     bot.sendPhoto(chatId, photo, {caption: 'Милые котята'});
 });
+*/
