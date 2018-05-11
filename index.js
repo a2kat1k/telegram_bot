@@ -32,6 +32,7 @@ setInterval(function(){
         }
 },1000);
 
+/*
 // Простая команда без параметров.
 bot.on('message', function (msg) {
     var chatId = msg.chat.id;
@@ -39,3 +40,4 @@ bot.on('message', function (msg) {
     var photo = 'cats.png';
     bot.sendPhoto(chatId, photo, {caption: 'Милые котята'});
 });
+*/
