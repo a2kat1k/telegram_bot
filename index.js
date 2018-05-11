@@ -6,13 +6,14 @@ var token = '569351376:AAGtqU7fjnEux6sVJpInEIs6OGI89Ki0L8Y';
 var bot = new TelegramBot(token, {polling: true});
 
 // Написать мне ... (/echo Hello World! - пришлет сообщение с этим приветствием.)
-bot.onText(/\/weather/,function (msg, match) {
-    bot.sendMessage(fromId, resp);
-});
+bot.onText(/\/weather/, function (msg, match) {
+    var fromId = msg.from.id;
+    bot.sendMessage(fromId, 'City?');
+    });
 
 var notes = [];
 
-bot.onText(/\/напомни (.+) в (.+)/, function (msg, match) {
+bot.onText(/\/напомни (.+) в (.+)/i, function (msg, match) {
     var userId = msg.from.id;
     var text = match[1];
     var time = match[2];
