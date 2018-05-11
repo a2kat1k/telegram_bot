@@ -5,6 +5,18 @@ var token = '569351376:AAGtqU7fjnEux6sVJpInEIs6OGI89Ki0L8Y';
 // Включить опрос сервера
 var bot = new TelegramBot(token, {polling: true});
 
+bot.onText(/\/echo (.+)/, (msg, match) => {
+    // 'msg' is the received Message from Telegram
+    // 'match' is the result of executing the regexp above on the text content
+    // of the message
+  
+    const chatId = msg.chat.id;
+    const resp = match[1]; // the captured "whatever"
+  
+    // send back the matched "whatever" to the chat
+    bot.sendMessage(chatId, resp);
+  });
+
 // Написать мне ... (/echo Hello World! - пришлет сообщение с этим приветствием.)
 bot.onText(/\/weather/, function (msg, match) {
     var fromId = msg.from.id;
@@ -33,7 +45,7 @@ setInterval(function(){
         }
 },1000);
 
-/*
+
 // Простая команда без параметров.
 bot.on('message', function (msg) {
     var chatId = msg.chat.id;
@@ -41,4 +53,3 @@ bot.on('message', function (msg) {
     var photo = 'cats.png';
     bot.sendPhoto(chatId, photo, {caption: 'Милые котята'});
 });
-*/
