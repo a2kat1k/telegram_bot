@@ -5,6 +5,10 @@ var token = '569351376:AAGtqU7fjnEux6sVJpInEIs6OGI89Ki0L8Y';
 // Включить опрос сервера
 var bot = new TelegramBot(token, {polling: true});
 
+bot.on('polling_error', (error) => {
+    console.log(error.code);  // => 'EFATAL'
+  });
+  
 // Matches /love
 bot.onText(/\/love/, function onLoveText(msg) {
     const opts = {
