@@ -29,7 +29,7 @@ bot.onText(/\/echo (.+)/, (msg, match) => {
     // 'msg' is the received Message from Telegram
     // 'match' is the result of executing the regexp above on the text content
     // of the message
-  
+  console.log("received id " + chatId);
     const chatId = msg.chat.id;
     const resp = match[1]; // the captured "whatever"
   
@@ -49,16 +49,18 @@ bot.onText(/\/напомни (.+) в (.+)/i, function (msg, match) {
     var userId = msg.from.id;
     var text = match[1];
     var time = match[2];
-
+    console.log("time " + time);
     notes.push( { 'uid':userId, 'time':time, 'text':text } );
 
     bot.sendMessage(userId, 'Отлично! Я обязательно напомню, если не сдохну :)');
 });
 
 setInterval(function(){
+    console.log("notes: " + notes.length);
     for (var i = 0; i < notes.length; i++){
         var curDate = new Date().getHours() + ':' + new Date().getMinutes();
             if ( notes[i]['time'] == curDate ) {
+                console.log("we are here : " + notes[i]['text']);
                 bot.sendMessage(notes[i]['uid'], 'Напоминаю, что вы должны: '+ notes[i]['text'] + ' сейчас.');
                 notes.splice(i,1);
             }
