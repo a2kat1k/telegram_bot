@@ -5,6 +5,21 @@ var token = '569351376:AAGtqU7fjnEux6sVJpInEIs6OGI89Ki0L8Y';
 // Включить опрос сервера
 var bot = new TelegramBot(token, {polling: true});
 
+// Matches /love
+bot.onText(/\/love/, function onLoveText(msg) {
+    const opts = {
+      reply_to_message_id: msg.message_id,
+      reply_markup: JSON.stringify({
+        keyboard: [
+          ['Yes, you are the bot of my life ❤'],
+          ['No, sorry there is another one...']
+        ]
+      })
+    };
+    bot.sendMessage(msg.chat.id, 'Do you love me?', opts);
+  });
+  
+
 bot.onText(/\/echo (.+)/, (msg, match) => {
     // 'msg' is the received Message from Telegram
     // 'match' is the result of executing the regexp above on the text content
